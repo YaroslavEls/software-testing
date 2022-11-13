@@ -1,6 +1,3 @@
-import os
-import time
-
 class Dot:
     def __init__(self, x, y, value):
         self.x = x
@@ -57,22 +54,21 @@ class Field:
                     return False
         return True
 
-    def draw(self):
-        count = 0
-        for i in self.dots:
-            print(i.value, end='')
-            count = count + 1
-            if count % self.cols == 0:
-                print('')
-
     def play(self):
         next = self.check()
         while next:
             self.step()
-            os.system('clear')
-            self.draw()
-            time.sleep(0.5)
             next = self.check()
+
+    def get_field(self):
+        out = ''
+        count = 0
+        for i in self.dots:
+            out = out + i.value
+            count = count + 1
+            if count % self.cols == 0:
+                out = out + '\n'
+        return out[:-1]
 
 
 def create_field(data):
@@ -90,15 +86,3 @@ def create_field(data):
             dots.append(dot)
 
     return Field(int(size[0]), int(size[1]), dots)
-
-
-def main():
-    f = open('input.txt', 'r')
-    data = f.read()
-    f.close()
-
-    fld = create_field(data)
-    fld.play()
-
-
-main()
