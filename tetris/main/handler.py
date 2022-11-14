@@ -15,15 +15,19 @@ class FileSystem:
         f.close()
         return data
 
-def main_handler(file_path, output, fs):
-    if not fs.is_exist(file_path):
+def main_handler(argv, output, fs):
+    if len(argv) < 2:
+        output.print_line('Please specify input file path')
+        return
+
+    if not fs.is_exist(argv[1]):
         output.print_line('File does not exist')
         return
 
-    try:
-        data = fs.read_file(file_path)
-    except:
-        output.print_line('Error while reading the file')
+    data = fs.read_file(argv[1])
+
+    if data == None:
+        output.print_line('Error while parsing input file')
         return
 
     game_field = create_field(data)
