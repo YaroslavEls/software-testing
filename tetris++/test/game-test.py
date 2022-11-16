@@ -71,6 +71,18 @@ class TestGame(unittest.TestCase):
             self.assertEqual(i.y, expected_coords[counter][1])
             counter = counter + 1
 
+    def test_field_hist(self):
+        self.field.play()
+
+        exp = [
+            '..p.....\n.ppp....\n..p.....\n........\n...#....\n...#...#\n#..#####',
+            '........\n..p.....\n.ppp....\n..p.....\n...#....\n...#...#\n#..#####',
+            '........\n........\n..p.....\n.ppp....\n..p#....\n...#...#\n#..#####'
+        ]
+        res = self.field.hist
+
+        self.assertEqual(res, exp)
+
     def test_stop_in_the_bottom(self):
         self.data = '5 6\n..p...\n##p.##\n##pp##\n##..##\n##..##'
         self.field = create_field(self.data)

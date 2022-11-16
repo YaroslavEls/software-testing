@@ -10,8 +10,8 @@ class MainOutput:
         counter = 0
         for i in arr:
             os.system('clear')
-            print(f'Step: {counter}')
-            print(i)
+            self.print_line(f'Step: {counter}')
+            self.print_line(i)
             counter = counter + 1
             time.sleep(0.5)
 
