@@ -1,6 +1,6 @@
 # software-testing
 
-#### Laboratory works, the fourth semester:
+#### Laboratory works, the fifth semester:
 
 1. Conway's Game of Life + Unit Tests
 2. Calculator + Unit Test
